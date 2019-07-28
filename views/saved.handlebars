@@ -10,56 +10,8 @@
                 <button type="submit" class="btn btn-outline-danger" id="RemoveSaved">Remove from Saved
                     Articles</button>
             </form>
-            {{!-- <button type="button" class="btn btn-outline-info add-note" id="AddNote{{this._id}}"
-                    articleid="{{this._id}}" class="add-note">Add Note</button> --}}
+
         </div>
     </div>
     {{/each}}
 </div>
-
-{{#each article}}
-<div id="myModal{{this._id}}" class="modal">
-
-    <div id="noteModal" class="modal-content">
-        <div class="modal-header">
-            <h2>Notes</h2>
-            <span id="close" articleid={{this._id}} class="close">&times;</span>
-
-        </div>
-
-        <div class="modal-body">
-
-            <div class="noteSaved" class="modal-content">
-                {{#each this.notes}}
-                <h3>{{this.title}}</h3>
-                <h4>{{this.message}}</h4>
-                <form method="POST" action="/remove/note/{{this._id}}?_method=PUT">
-                    <button type="submit" class="btn btn-danger" id="DeleteNote">Delete Note</button>
-                </form>
-                {{/each}}
-
-            </div>
-            <hr>
-            <form class="navbar-form navbar-left" action="/articlenotes/{{this.id}}" method="POST">
-                <div class="form-group">
-                    <input id="titleinput" type="text" name="title" placeholder="Title"><br>
-                    <textarea id="bodyinput" class="form-control" rows="4" id="noteMessage" name="message"
-                        placeholder="Notes"></textarea>
-                </div>
-                <button id="savenote" type="submit" class="btn btn-success">Save</button>
-            </form>
-        </div>
-        <div class="modal-footer">
-
-        </div>
-    </div>
-
-</div>
-{{/each}}
-
-<script type="text/javascript" src="../public/app.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>

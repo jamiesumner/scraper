@@ -92,7 +92,6 @@ app.post("/saved/:id", function (req, res) {
 
 app.get("/saved", function (req, res) {
     db.Article.find({ saved: true }).sort({ "_id": -1 })
-        .populate("notes")
         .then(articles => {
             res.render("saved", { article: articles })
         })
