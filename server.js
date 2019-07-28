@@ -35,8 +35,8 @@ app.get("/articles-json", function (req, res) {
         })
 });
 
-app.get("/articles", function (req, res) {
-    db.Article.find({ saved: false }).sort({ "_id": -1 }).limit(50)
+app.get("/articles", async function (req, res) {
+    await db.Article.find({ saved: false }).sort({ "_id": -1 })
         .then(articles => {
             res.render("index", { article: articles })
         })
@@ -134,7 +134,7 @@ app.post("/remove/:id", function (req, res) {
 // });
 
 app.get("/", function (req, res) {
-    res.redirect("/scrape")
+    res.redirect("/articles")
 });
 
 app.listen(PORT, function () {
