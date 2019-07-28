@@ -7,12 +7,11 @@
             </a>
             <p>{{this.summary}}</p>
             <form method="POST" action="/remove/{{this._id}}?_method=PUT">
-                <button type="button" class="btn btn-outline-info add-note" id="AddNote{{this._id}}"
-                    articleid="{{this._id}}" class="add-note">Add Note</button>
                 <button type="submit" class="btn btn-outline-danger" id="RemoveSaved">Remove from Saved
                     Articles</button>
             </form>
-
+            {{!-- <button type="button" class="btn btn-outline-info add-note" id="AddNote{{this._id}}"
+                    articleid="{{this._id}}" class="add-note">Add Note</button> --}}
         </div>
     </div>
     {{/each}}
@@ -58,7 +57,7 @@
 </div>
 {{/each}}
 
-<script type="text/javascript" src="../public/index.js"></script>
+<script type="text/javascript" src="../public/app.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"

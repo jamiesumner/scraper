@@ -84,7 +84,6 @@ app.get("/clear", function (req, res) {
     });
 });
 
-
 app.post("/saved/:id", function (req, res) {
     db.Article.updateOne({ _id: req.params.id }, { $set: { saved: true } }, function (err, doc) {
         res.redirect("/articles")
@@ -107,44 +106,6 @@ app.post("/remove/:id", function (req, res) {
         res.redirect("/saved")
     });
 });
-
-// app.get("/articles/:id", function (req, res) {
-//     db.Article.findOne({ _id: req.params.id })
-//         .populate("notes")
-//         .then(function (dbArticle) {
-//             res.json(dbArticle)
-//         })
-//         .catch(function (err) {
-//             res.json(err)
-//         })
-// });
-
-// app.post("/articlenotes/:id", function (req, res) {
-//     db.Note.create(req.body)
-//         .then(function (dbNote) {
-//             return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { notes: dbNote._id } }, { new: true })
-//         })
-//         .then(function (dbArticle) {
-//             res.redirect("/saved")
-//         })
-//         .catch(function (err) {
-//             console.log(err);
-//         });
-// });
-
-// app.post("/remove/note/:id", function (req, res) {
-//     console.log("remove note clicked")
-//     console.log(req.params.id)
-//     db.Note.remove({ _id: req.params.id }, function (err, doc) {
-//         if (err) {
-//             res.send(err);
-//         }
-//         else {
-//             console.log("note deleted")
-//             res.redirect("/saved")
-//         }
-//     });
-// });
 
 app.get("/", function (req, res) {
     res.redirect("/articles")
