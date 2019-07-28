@@ -106,6 +106,33 @@ app.post("/remove/:id", function (req, res) {
     });
 });
 
+// the commented out code is a starter for including notes for saved articles
+
+// app.post("/newNote/:id", function (req, res) {
+//     db.Note.create(req.body).then(function (dbNote) {
+//         return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { notes: dbNote._id } }, { new: true });
+//     }).then(function (dbArticle) {
+//         res.json(dbArticle);
+//     }).catch(function (err) {
+//         res.json(err);
+//     });
+// });
+
+// app.get("/allNotes/:id", function (req, res) {
+//     db.Article.findOne({ _id: req.params.id }).populate("notes")
+//         .then(function (dbArticle) {
+//             res.json(dbArticle);
+//         }).catch(function (err) {
+//             res.json(err);
+//         });
+// });
+
+// app.delete("/deleteNote/:noteid", function (req, res) {
+//     db.Note.deleteOne({ _id: req.params.noteid }).then(function (data) {
+//         res.redirect("/saved")
+//     })
+// });
+
 app.get("/", function (req, res) {
     res.redirect("/articles")
 });
