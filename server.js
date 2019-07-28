@@ -45,8 +45,8 @@ app.get("/articles", async function (req, res) {
         });
 });
 
-app.get("/scrape", function (req, res) {
-    axios.get("https://www.npr.org/sections/pop-culture/")
+app.get("/scrape", async function (req, res) {
+    await axios.get("https://www.npr.org/sections/pop-culture/")
         .then(function (response) {
             const $ = cheerio.load(response.data);
             $(".item-info").each(function (i, element) {
