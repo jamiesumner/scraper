@@ -19,11 +19,16 @@ app.engine("handlebars", handlebars({
 }));
 app.set("view engine", "handlebars");
 
-
 const db = require("./models");
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/nonewsisgood";
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/mongoNews";
+
+mongoose.connect(MONGODB_URI,
+    {
+        useNewUrlParser: true,
+        user: process.env.DB_USER,
+        pass: process.env.DB_PASSWORD
+    })
 
 app.get("/articles-json", function (req, res) {
     db.Article.find()
@@ -35,8 +40,8 @@ app.get("/articles-json", function (req, res) {
         })
 });
 
-app.get("/articles", async function (req, res) {
-    await db.Article.find({ saved: false }).sort({ "_id": -1 })
+app.get("/articles", function (req, res) {
+    db.Article.find({ saved: false }).sort({ "_id": -1 })
         .then(articles => {
             res.render("index", { article: articles })
         })
